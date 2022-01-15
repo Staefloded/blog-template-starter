@@ -2,7 +2,6 @@ import { useGetNews, useGetPaginatedNews } from "queries/queryhooks/news";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader, SyncLoader } from "react-spinners";
-import CustomButton from "components/custom-button.component";
 import sliceWord from "utils/sliceWord";
 
 const Home = () => {
@@ -45,24 +44,25 @@ const Home = () => {
 
           {/* Prev and Next Button */}
           <div className="mt-5 flex items-center space-x-5">
-            <CustomButton
-              className="border border-solid bg-gray-500 disabled:bg-gray-200 disabled:text-gray-400 text-white rounded-md py-2 px-4"
+            <button
               onClick={() => setPage((old) => Math.max(old - 1, 0))}
               disabled={page === 1}
+              className="custom-btn"
             >
               Prev
-            </CustomButton>
+            </button>
 
-            <CustomButton
+            <button
               onClick={() => {
                 if (!isPreviousData && data) {
                   setPage((old) => old + 1);
                 }
               }}
+              className="custom-btn"
               disabled={isPreviousData || page * limit >= news?.length}
             >
               Next
-            </CustomButton>
+            </button>
             {isFetching && <BounceLoader size={15} />}
           </div>
         </>
