@@ -1,6 +1,7 @@
 import useCommentOnchange from "hooks/useCommentOnchange";
 import { useMutation, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "utils/axiosInstance";
 import CommentsForm from "./comment-form.component";
 import Comment from "./comment.component";
@@ -26,11 +27,11 @@ const Comments = ({ comments }) => {
       }),
     {
       onError: (error) => {
-        console.log(error);
+        toast.error("An Error Occured..");
       },
       onSuccess: () => {
         queryClient.refetchQueries(["getCommentsForNews"]);
-        console.log("success");
+        toast.success("Comment added successfully");
       },
     }
   );
@@ -65,7 +66,7 @@ const Comments = ({ comments }) => {
       ) : (
         <ul className="mt-10">
           {comments
-            ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            ?.sort((a, b) => b.id - a.id)
             ?.map((comment) => (
               <Comment key={comment.id} data={comment} />
             ))}

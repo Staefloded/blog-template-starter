@@ -23,6 +23,7 @@ const CommentsForm = ({
           onChange={handleChange}
           className="input-form"
           placeholder="Your Name..."
+          title="Enter Your name"
           required
         />
       </div>
@@ -36,6 +37,8 @@ const CommentsForm = ({
           onChange={handleChange}
           className="input-form"
           placeholder="Add Avatar URL..."
+          pattern="https?://.+"
+          title="Input a valid URL"
           required
         />
       </div>
@@ -50,6 +53,7 @@ const CommentsForm = ({
           onChange={handleChange}
           className="input-form mt-2 resize-none h-24 mb-3"
           placeholder="Add Comment..."
+          title="Add your comment"
           required
         />
       </div>

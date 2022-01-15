@@ -30,7 +30,7 @@ const Home = () => {
         <>
           <div className="flex flex-col space-y-3 ">
             {data
-              ?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))
+              ?.sort((a, b) => b?.id - a?.id)
               ?.map((news) => (
                 <Link to={`/news/${news?.id}`} key={news.id}>
                   <div className="bg-gray-100 rounded-md py-3 px-3 flex flex-col">

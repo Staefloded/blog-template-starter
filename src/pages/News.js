@@ -3,9 +3,10 @@ import {
   useGetImagesForNews,
   useGetSingleNews,
 } from "queries/queryhooks/news";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import Comments from "components/comments.component";
+import { useEffect } from "react";
 
 const News = () => {
   let params = useParams();
@@ -16,6 +17,10 @@ const News = () => {
 
   const { data: images, status: imageStatus } = useGetImagesForNews(params?.id);
 
+  useEffect(() => {
+    document.title = `${newsStatus === "loading" ? "Loading..." : news?.title} | News`;
+  }, [news, newsStatus]);
+
   return (
     <div className="my-10">
       {newsStatus === "loading" || commentStatus === "loading" || imageStatus === "loading" ? (
@@ -25,6 +30,12 @@ const News = () => {
       ) : (
         <>
           <article className="max-w-3xl w-full">
+            <Link
+              className="bg-gray-100 px-5 py-3 rounded-md inline-block mb-3"
+              to={`/news/edit/${params?.id}`}
+            >
+              Edit News
+            </Link>
             <h1 className="text-3xl font-bold capitalize">{news?.title}</h1>
             <p className="text-sm font-medium text-gray-500">Written By: {news?.author}</p>
 

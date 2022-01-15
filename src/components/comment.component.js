@@ -3,6 +3,7 @@ import moment from "moment";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "utils/axiosInstance";
 import CommentsForm from "./comment-form.component";
 
@@ -17,7 +18,6 @@ const Comment = ({ data }) => {
     data?.comment
   );
 
-  //   delete comment
   const { mutate: deleteComment, status } = useMutation(
     () =>
       api.delete(`/news/${params?.id}/comments/${data?.id}`, {
@@ -27,11 +27,11 @@ const Comment = ({ data }) => {
       }),
     {
       onError: (error) => {
-        console.log(error);
+        toast.error("An error occured");
       },
       onSuccess: () => {
         queryClient.refetchQueries(["getCommentsForNews"]);
-        console.log("success");
+        toast.success("Comment Deleted Successfully");
       },
     }
   );
@@ -51,11 +51,11 @@ const Comment = ({ data }) => {
       }),
     {
       onError: (error) => {
-        // console.log(error);
+        toast.error("An Error Occured..");
       },
       onSuccess: () => {
-        queryClient.refetchQueries(["getCommentsForNews"]);
-        // console.log("success");
+        queryClient.refetchQueries(["getCommentsForNews", params?.id]);
+        toast.success("Comment edited successfully");
       },
     }
   );
@@ -63,8 +63,6 @@ const Comment = ({ data }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     editComment({ name, avatar, comment });
-
-    // setEdit(false);
   };
 
   return (

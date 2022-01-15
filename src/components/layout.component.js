@@ -35,7 +35,7 @@ const Layout = () => {
 
         <div className="text-3xl text-center mt-10 font-bold text-gray-100">My News Site</div>
       </div>
-      <div className="container mx-auto w-full px-5">
+      <div className="container mx-auto w-full px-5 pb-20">
         <Outlet />
       </div>
     </div>
