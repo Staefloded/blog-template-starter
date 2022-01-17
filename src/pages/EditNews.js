@@ -35,7 +35,7 @@ const EditNews = () => {
       }),
     {
       onError: (error) => {
-        toast.error("An error occured");
+        toast.error(error.response.data);
       },
       onSuccess: () => {
         queryClient.refetchQueries(["singleNews", params?.id]);

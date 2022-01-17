@@ -27,7 +27,7 @@ const Comment = ({ data }) => {
       }),
     {
       onError: (error) => {
-        toast.error("An error occured");
+        toast.error(error.response.data);
       },
       onSuccess: () => {
         queryClient.refetchQueries(["getCommentsForNews"]);
@@ -51,7 +51,7 @@ const Comment = ({ data }) => {
       }),
     {
       onError: (error) => {
-        toast.error("An Error Occured..");
+        toast.error(error.response.data);
       },
       onSuccess: () => {
         queryClient.refetchQueries(["getCommentsForNews", params?.id]);

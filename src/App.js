@@ -4,9 +4,12 @@ import Layout from "components/layout.component";
 import NotFound from "pages/NotFound";
 import News from "pages/News";
 import EditNews from "pages/EditNews";
-import AddNews from "pages/AddNews";
+import NewsLanding from "pages/NewsLanding";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function App() {
   return (
@@ -17,9 +20,9 @@ function App() {
           <Route index element={<Home />} />
 
           <Route path="news">
+            <Route index element={<NewsLanding />} />
             <Route path=":id" element={<News />} />
             <Route path="edit/:id" element={<EditNews />} />
-            <Route path="add" element={<AddNews />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

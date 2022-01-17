@@ -11,3 +11,20 @@
     @apply border border-solid border-gray-700 px-2 py-1 placeholder:text-sm w-full;
   }
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: gray;
+  color: white !important;
+  font-size: 10px !important;
+  padding: 20px 20px;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: white !important;
+  font-size: 30px !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: white !important;
+}

@@ -27,11 +27,17 @@ const Comments = ({ comments }) => {
       }),
     {
       onError: (error) => {
-        toast.error("An Error Occured..");
+        toast.error(error.response.data);
       },
       onSuccess: () => {
         queryClient.refetchQueries(["getCommentsForNews"]);
         toast.success("Comment added successfully");
+
+        setData({
+          name: "",
+          avatar: "",
+          comment: "",
+        });
       },
     }
   );
@@ -39,12 +45,6 @@ const Comments = ({ comments }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addComment({ name, avatar, comment });
-
-    setData({
-      name: "",
-      avatar: "",
-      comment: "",
-    });
   };
 
   return (

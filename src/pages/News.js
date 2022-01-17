@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import Comments from "components/comments.component";
 import { useEffect } from "react";
+import Slider from "components/slider.compnent";
 
 const News = () => {
   let params = useParams();
@@ -38,6 +39,8 @@ const News = () => {
             </Link>
             <h1 className="text-3xl font-bold capitalize">{news?.title}</h1>
             <p className="text-sm font-medium text-gray-500">Written By: {news?.author}</p>
+
+            <Slider images={images} />
 
             <div className="mt-10 font-normal text-lg">{news?.body}</div>
           </article>
