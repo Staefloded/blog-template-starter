@@ -1,13 +1,13 @@
 # Documentation
-
-A simple react app that shows how to use react-query for data fetching and react-router v6 for Client side routing
+A simple News app.
 
 ## Pages
  - Home = /
- - NewsPage = /news
+ - Add News page = /news
  - News = /news:id
+ - Edit News= /news/edit/:id
+ - Not Found Page = "*"
 
 ### Functionality
 Created a `useCommentOnchange()` hook that manages state for controlled form for the comment
-
-Still building in progress
+Created a `useNewsOnchange()` hook that manages state for controlled form for the News
